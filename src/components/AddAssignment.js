@@ -92,7 +92,7 @@ function AddAssignment(props) {
         <Button onClick={handleClose}>
           Cancel
         </Button>
-        <Button onClick={handleSubmit}>
+        <Button id="submit" onClick={handleSubmit}>
           Add
         </Button>
       </DialogActions>

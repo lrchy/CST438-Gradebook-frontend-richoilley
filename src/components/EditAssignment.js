@@ -71,6 +71,7 @@ function EditAssignment(props) {
             <label>New Assignment Name</label>
             <input 
               type='text'
+              id='updatedName'
               value={assignmentName}
               onChange={e => setAssignmentName(e.target.value)}
             />
@@ -79,13 +80,14 @@ function EditAssignment(props) {
             <label>New Due Date</label>
             <input 
               type='date'
+              id='updatedDate'
               value={dueDate}
               onChange={e => setDueDate(e.target.value)}
             />
           </div>
-          <button type="submit">Update</button>
+          <button id='update' type="submit">Update</button>
         </form>
-        <button onClick={handleBackClick}>Back</button>
+        <button id='backToList' onClick={handleBackClick}>Back</button>
       </div>
   ); 
 }

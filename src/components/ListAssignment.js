@@ -48,7 +48,7 @@ function ListAssignment(props) {
       <div>
         <h3>Assignments</h3>
         
-        <button onClick={() => props.history.push('/addAssignment')}>Add Assignment</button>
+        <button id="createAssignment" onClick={() => props.history.push('/addAssignment')}>Add Assignment</button>
 
         <div margin="auto" >
           <h4>{message}&nbsp;</h4>
@@ -71,7 +71,7 @@ function ListAssignment(props) {
                         <Link to={`/editAssignment/${assignments[idx].id}`}>Edit</Link>
                       </td>
                       <td>
-                        <button onClick={() => deleteAssignment(assignments[idx].id)}>Delete</button>
+                        <button id='deleteAssignment' onClick={() => deleteAssignment(assignments[idx].id)}>Delete</button>
                       </td>
                     </tr>
                   ))}
