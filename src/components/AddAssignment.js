@@ -13,6 +13,7 @@ function AddAssignment(props) {
   const [assignmentName, setAssignmentName] = useState('');
   const [courseId, setCourse_id] = useState('');
   const [dueDate, setDueDate] = useState('');
+  const token = sessionStorage.getItem("jwt");
 
 //function to close the dialog and navigate back to previous page
   const handleClose = () => {
@@ -33,7 +34,8 @@ function AddAssignment(props) {
     fetch(`${SERVER_URL}/assignment`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization':token
       },
       body: JSON.stringify(newAssignment)
     })

@@ -7,7 +7,8 @@ function ListAssignment(props) {
 
   const [assignments, setAssignments] = useState([]);
   const [message, setMessage] = useState('');
-
+  const token = sessionStorage.getItem("jwt");
+  
   useEffect(() => {
    // called once after intial render
    fetchAssignments();
@@ -15,7 +16,10 @@ function ListAssignment(props) {
  
   const fetchAssignments = () => {
     console.log("fetchAssignments");
-    fetch(`${SERVER_URL}/assignment`)
+    fetch(`${SERVER_URL}/assignment`,{
+      headers:{'Authorization':token
+      }
+  })
     .then((response) => response.json() ) 
     .then((data) => { 
       console.log("assignment length "+data.length);
@@ -27,7 +31,8 @@ function ListAssignment(props) {
   //delete request to delete an assignment based on ID on the server (see button below)
   const deleteAssignment = (id) => {
     fetch(`${SERVER_URL}/assignment/${id}`, {
-      method : 'DELETE'
+      method : 'DELETE',
+      headers : { 'Authorization' : token}
     })
       .then(response => {
         if (response.ok){

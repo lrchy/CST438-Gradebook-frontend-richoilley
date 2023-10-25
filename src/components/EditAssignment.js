@@ -17,10 +17,15 @@ function EditAssignment(props) {
 
   //this is for the back button logic
   const history=useHistory();
+  const token = sessionsStorage.getItem("jwt");
 
   //fetch assignment details when components mounts or when id changes
   useEffect(() => {
-    fetch(`${SERVER_URL}/assignment/${id}`)
+    fetch(`${SERVER_URL}/assignment/${id}`, {
+      headers: {
+        'Authorization':token
+      }
+    })
       .then(response=>response.json())
       .then(data=>{
       setAssignmentName(data.assignmentName);
@@ -42,7 +47,8 @@ function EditAssignment(props) {
     fetch(`${SERVER_URL}/assignment/${id}`,{
       method:'PUT',
       headers : {
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Authorization' : token
       },
       body:JSON.stringify(updatedAssignment),
     })
